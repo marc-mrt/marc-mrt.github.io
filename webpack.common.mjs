@@ -133,6 +133,7 @@ export default {
   ],
   output: {
     filename: "[name].[contenthash].js",
+    publicPath: "/",
     path: path.resolve(process.cwd(), "dist"),
     clean: true,
   },
