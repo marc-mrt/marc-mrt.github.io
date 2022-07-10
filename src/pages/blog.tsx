@@ -28,6 +28,7 @@ export default function Blog() {
             }
           />
         ))}
+        <Route path="*" element={<Skeleton />} />
       </Route>
     </Routes>
   );
