@@ -11,7 +11,7 @@ h2 {
 }
 
 p {
-  @apply text-base md:text-lg;
+  @apply text-base md:text-lg leading-relaxed;
 }
 
 a {

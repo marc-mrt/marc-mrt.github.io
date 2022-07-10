@@ -1,4 +1,5 @@
-import Head from "next/head";
+import React from "react";
+import { Helmet } from "react-helmet";
 
 export function Meta({
   title = "Marc Morant",
@@ -8,7 +9,7 @@ export function Meta({
   description?: string;
 }) {
   return (
-    <Head>
+    <Helmet>
       <title>{title}</title>
 
       <meta name="og:site_name" content={title} />
@@ -18,6 +19,6 @@ export function Meta({
       <meta name="description" content={description} />
       <meta name="og:description" content={description} />
       <meta name="twitter:description" content={description} />
-    </Head>
+    </Helmet>
   );
 }

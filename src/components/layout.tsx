@@ -1,76 +1,56 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
-import cn from "classnames";
+import classNames from "classnames";
 
-export function Layout({ children }: React.PropsWithChildren) {
+import { Meta } from "./meta";
+
+export function Layout() {
   return (
     <div className="min-h-screen mx-auto w-11/12 sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12 pt-48">
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <Meta />
+      <header>
+        <h1 className="mb-20">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              classNames(isActive ? "text-blue-900" : "hover:underline")
+            }
+          >
+            Home
+          </NavLink>
+          .
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              classNames(isActive ? "text-blue-900" : "hover:underline")
+            }
+          >
+            Blog
+          </NavLink>
+          .
+        </h1>
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer className="flex flex-col items-center my-8 border-t border-slate-500">
+        <div className="flex items-center my-2">
+          <a
+            className="mr-2"
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Svg Icon={GitHub} />
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+            <Svg viewBox="0 0 24 24" Icon={LinkedIn} />
+          </a>
+        </div>
+        <small>{APP_VERSION}</small>
+      </footer>
     </div>
-  );
-}
-
-function Header() {
-  const { pathname } = useRouter();
-
-  const routes = [
-    {
-      href: "/",
-      name: "Home",
-    },
-    {
-      href: "/blog",
-      name: "Blog",
-    },
-  ];
-
-  return (
-    <header>
-      <h1 className="mb-20">
-        {routes.map(({ href, name }) => (
-          <span key={name}>
-            <Link href={href}>
-              <a
-                className={cn(
-                  pathname === href ? "text-blue-900" : "hover:underline",
-                )}
-              >
-                {name}
-              </a>
-            </Link>
-            .
-          </span>
-        ))}
-      </h1>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="flex flex-col items-center my-8 border-t border-slate-500">
-      <div className="flex items-center my-2">
-        <a
-          className="mr-2"
-          href={process.env.NEXT_PUBLIC_GITHUB_URL as string}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Svg Icon={GitHub} />
-        </a>
-        <a
-          href={process.env.NEXT_PUBLIC_LINKEDIN_URL as string}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Svg viewBox="0 0 24 24" Icon={LinkedIn} />
-        </a>
-      </div>
-      <small>{process.env.NEXT_PUBLIC_APP_VERSION}</small>
-    </footer>
   );
 }
 

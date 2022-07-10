@@ -1,3 +1,5 @@
+import React from "react";
+
 import { DateTime } from "luxon";
 
 export function Date({ date }: { date: string }) {

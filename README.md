@@ -4,4 +4,4 @@ My minimalistic personal app.
 
 ## Credits
 
-Made with [NextJS](https://github.com/vercel/next.js).
+Made with [React](https://reactjs.org/) in [TypeScript](https://www.typescriptlang.org).

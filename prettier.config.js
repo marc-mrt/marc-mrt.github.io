@@ -4,7 +4,13 @@ module.exports = {
   trailingComma: "all",
   singleQuote: false,
   semi: true,
-  importOrder: ["^react$", "^next/(.*)$", "^[a-z]+(/(.*))?$", "^[./]"],
+  importOrder: [
+    "^react(.*)$",
+    "^next/(.*)$",
+    "^[a-z-]+(/(.*))?$",
+    "^(.*)$",
+    "^(.*).css$",
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };
