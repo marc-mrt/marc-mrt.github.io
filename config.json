@@ -1,0 +1,41 @@
+{
+  "baseURL": "https://morant.me/",
+  "author": "Marc Morant",
+  "title": "Marc Morant",
+  "languageCode": "en-us",
+  "uglyURLs": true,
+  "enableRobotsTXT": true,
+  "permalinks": {
+    "/blog/": "/blog/:year:month:day/:title"
+  },
+  "deployment": {
+    "targets": [
+      {
+        "name": "prod",
+        "URL": "s3://morant.me?region=eu-central-1",
+        "cloudFrontDistributionID": "E254THNM43QKND"
+      }
+    ],
+    "matchers": [
+      {
+        "pattern": "^.+\\.(js|css|svg|ttf)$",
+        "cacheControl": "max-age=31536000, no-transform, public",
+        "gzip": true
+      },
+      {
+        "pattern": "^.+\\.(png|jpg)$",
+        "cacheControl": "max-age=31536000, no-transform, public",
+        "gzip": false
+      },
+      {
+        "pattern": "^sitemap\\.xml$",
+        "contentType": "application/xml",
+        "gzip": true
+      },
+      {
+        "pattern": "^.+\\.(html|xml|json)$",
+        "gzip": true
+      }
+    ]
+  }
+}

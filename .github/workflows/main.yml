@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run:
-    name: Test & Deploy
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     environment:
       name: prod
@@ -19,22 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          node-version: "16"
-          cache: "yarn"
-
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-
-      - name: Typecheck
-        run: yarn typecheck
-
-      - name: Lint
-        run: yarn lint
+          hugo-version: "0.101.0"
+          extended: true
 
       - name: Build
-        run: yarn build
+        run: hugo --minify
 
       - name: Set AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -43,8 +35,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
-      - name: Sync to S3
-        run: aws s3 sync ./dist s3://morant.me
-
-      - name: Create cache invalidation
-        run: aws cloudfront create-invalidation --distribution-id E254THNM43QKND --paths /'*'
+      - name: Deploy to S3
+        run: hugo deploy --target=prod
