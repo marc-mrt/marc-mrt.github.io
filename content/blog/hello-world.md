@@ -1,6 +1,5 @@
 ---
 title: "Hello world!"
-excerpt: "No one escapes it."
 date: "2022-05-29"
 ---
 
