@@ -23,7 +23,7 @@
 /* Variable responsivness */
 @media screen and (max-width: 35.5em) {
   :root {
-    --body-padding: 0;
+    --body-padding: 6rem 0 0 0;
 
     --text-font-size-sm: 0.5rem;
     --text-font-size: 0.875rem;
