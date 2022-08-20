@@ -1,6 +1,6 @@
 {{ define "title" }} {{ .Title }} &ndash; {{ .Site.Title }} {{ end }} {{ define
 "main" }}
 <h2 class="text-accent">{{ .Title }}</h2>
-<small> {{ .Date.Format "Jan 2, 2006" }}</small>
+<small class="italic"> {{ .Date.Format "Jan 2, 2006" }}</small>
 <div>{{ .Content }}</div>
 {{ end }}
