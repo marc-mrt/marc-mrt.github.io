@@ -4,13 +4,10 @@
   <dl>
     {{ range .Pages }}
     <dt>
-      <div class="flex baseline">
-        <h2>
-          <a href="{{ .Permalink }}"> {{ .Title }}</a>
-        </h2>
-        &nbsp;
-        <small class="italic"> {{ .Date.Format "Jan 2, 2006" }}</small>
-      </div>
+      <h2>
+        <a href="{{ .Permalink }}"> {{ .Title }}</a>
+      </h2>
+      <small class="italic"> {{ .Date.Format "Jan 2, 2006" }}</small>
     </dt>
     {{ end }}
   </dl>
