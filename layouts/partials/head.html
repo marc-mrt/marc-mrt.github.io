@@ -6,9 +6,11 @@
 />
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css"
-  integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH"
-  crossorigin="anonymous"
+  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/base-min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-min.css"
 />
 <link
   rel="stylesheet"
@@ -16,6 +18,13 @@
 />
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="/css/index.css" />
+{{ $css := resources.Get "css/index.css" | minify | resources.Fingerprint
+"sha512"}}
+<link
+  rel="stylesheet"
+  href="{{ $css.Permalink }}"
+  integrity="{{ $css.Data.Integrity }}"
+  crossorigin="anonymous"
+/>
 
 <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
