@@ -1,8 +1,8 @@
 # morant.me
 
-[![Main](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml/badge.svg)](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml)
+[![CI](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml/badge.svg)](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml)
 
-My web portfolio.
+My personal website.
 
 ## Credits
 
