@@ -1,7 +1,0 @@
-<h1>
-  {{ $currentPage  := . }}
-  <!-- Home -->
-  <a href="/" class="{{ if eq $currentPage.RelPermalink "/" }}text-accent{{ end }}">Home</a>.
-  <!-- Blog -->
-  <a href="/blog.html" class="{{ if eq $currentPage.RelPermalink "/blog.html" }}text-accent{{ end }}">Blog</a>.
-</h1>

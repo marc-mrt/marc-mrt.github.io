@@ -1,0 +1,19 @@
+<nav>
+  <h1>
+    {{ $currentPage := . }}
+    <!-- Home -->
+    {{ $homePage := .GetPage "/" }}
+    <a
+      href="{{ $homePage.Permalink }}"
+      class="{{ if $currentPage.IsHome }}text-accent{{ end }}"
+      >{{ $homePage.Title }} </a
+    >.
+    <!-- Blog -->
+    {{ $blogPage := .GetPage "/blog" }}
+    <a
+      href="{{ $blogPage.Permalink }}"
+      class="{{ if eq $currentPage.RelPermalink $blogPage.RelPermalink }}text-accent{{ end }}"
+      >{{ $blogPage.Title }}</a
+    >.
+  </h1>
+</nav>
