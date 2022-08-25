@@ -1,7 +1,7 @@
 <nav>
   <h1>
     {{ $currentPage := . }} {{ $homePage := .GetPage "/" }} {{ $blogPage :=
-    .GetPage "/blog" }} {{ $cvPage := .GetPage "/cv" }}
+    .GetPage "/blog" }} {{ $cvPage := .GetPage "/about" }}
     <a
       href="{{ $homePage.Permalink }}"
       class="{{ if $currentPage.IsHome }}text-accent{{ end }}"
