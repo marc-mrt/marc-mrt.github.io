@@ -10,15 +10,14 @@ _Aug '19 - Current_
 
 `go` `sql` `typescript` `nextjs` `react` `webpack` `styled-components` `aws` `terraform` `ddd` `architecture` `leadership` `management` `hiring` `security`
 
-A VC-backed start-up providing identity verification services.
+A VC-backed startup providing identity verification services worldwide.
 
-Having joined in the early stages, I was tasked to build the first verions of 3 core apps' frontends.
-Moved on to take part of the hiring process of the next members of the frontend team & lead them to maintain, and extend the apps.
+I joined in the early stages, building the first versions of 3 core apps' frontends, and moved on to take part in the hiring process of the frontend team, leading them to maintain and extend the apps.
 
-After some time, products being bound to evolve, the team proceeded to architecture a new version of the product using new technologies, following a domain-driven design approach.
-I took part of the entire process, end to end, where I had the opportunity to jump on the other side of the fence, learning new technologies as well.
+After achieving product-market fit, the engineering team architectured a new product using the latest technologies, following a domain-driven design.
+I took part in the entire process, end to end, where I had the opportunity to jump on the other side of the fence, learning new technologies as well.
 
-We are right now bringing that new product to life in an iterative fashion, improving our technological security posture and migrating our customer base to it.
+We are bringing that new product to life in an iterative fashion, improving our technological security posture, and migrating our customer base.
 
 ## Software engineer, Recare
 
@@ -26,15 +25,15 @@ _Jun. '18 - Mar. '20_
 
 `typescript` `javascript` `flow` `react` `redux` `graphql` `rest` `webpack` `babel` `e2e encryption` `cryptography`
 
-An automated patient transfer utility product servicing Germany's clinics.
+A patient-transfer service for clinics in Germany.
 
-In this role, I've maintained and extended an existing product suite of 3 apps.
-Dealing with patient data, it was of upmost importance to ensure the company had no view into it, for which we used and maintain our own e2e encryption solution.
+In this role, I was part of the team that maintained and extended an existing product suite of 3 apps.
+Dealing with patient data, it was of utmost importance to ensure the company had no view into it, for which we used and maintained our e2e encryption solution.
 
-After joining, it became obvious that the codebase became hard to maintain, which triggered migrating an entire codebase from the Flow type system to TypeScript, a procedure that we could only conduct at once given their incompatibility.
-At the time of shipping, we relied on our e2e integration test to validate the transition.
+After joining, it became evident that the codebase was hard to maintain. We migrated the entire codebase from the Flow type system to TypeScript, a procedure we could only conduct in full at once.
+We relied on our e2e integration test to validate that transition.
 
-While extending its market ambition towards France, the products required to be translated, a challenge we decided to tackle in-house, thus building a new app from scratch to easily extend, update, and synchronize terms with all our apps & codebases.
+While extending its market ambition towards France, the products required internationalization, a challenge we decided to tackle by building a new app from scratch to update and synchronize terms within all our apps & codebases.
 
 ## Frontend developer, Intern, Mhirba
 
@@ -42,10 +41,10 @@ _Apr. '17 - Aug. '17_
 
 `javascript` `flow` `react` `angular` `vue` `electron` `iot` `prototyping`
 
-This craft studio for hire was managed by its only founder, working with big companies to prototype IoT products.
+A craft studio for hire, managed by its only founder, working with big companies to prototype IoT products.
 
-I developed a frontend for a cross-platform app and assess what best tools to use for the task.
-Fast-paced iteration was key to ensure the prototype fits the needs of the customer with quick feedback loops.
+I developed a frontend for a cross-platform app, assessing various technologies for the job.
+Fast-paced iteration was essential to ensure the prototype fits the customer's needs with quick feedback loops.
 
 ## Game developer, Intern, Wolcen
 
@@ -53,10 +52,10 @@ _Sep. '15 - Dec. '15_
 
 `cpp` `actionscript 2.0` `cry engine 3` `entity-component-system` `documentation`
 
-This indie game studio was working on its first early-access game.
+An indie game studio that was working on its first game's release.
 
-I helped the team build the game menus, its dependency management and shader compilation.
-The team was short-handed at the time and looking to expend, which required thorough documentation for all steps taken during development.
+I helped the team build the game menus, dependency management, and shader compilation.
+The team was short-handed at the time and looking to expand, which required thorough documentation for all steps taken during development.
 
 ---
 
@@ -68,9 +67,9 @@ _Sep. '14 - Aug. '19_
 
 `c` `cpp` `java` `sql` `tdd` `architecture` `management`
 
-During this 5-year long program, I've learned to love programming, embrace new technologies and navigate a lot of different angles to software engineering.
+During this 5-year program, I've learned to love programming, embrace new technologies and navigate a lot of different angles to software engineering.
 
-In the final years, most of the program was aimed at entrepreneurship and innovation within the sector, learnings I carry with me to this day when working on tech products.
+In the final years, most of the program focused on entrepreneurship and innovation within the sector, learnings I carry with me to this day when working on tech products.
 
 ---
 
@@ -82,8 +81,8 @@ _https://github.com/marc-mrt/atom-molecule-dev-environment_
 
 `javascript` `flow` `react` `redux` `css` `styled-components` `babel` `rx` `lsp`
 
-A plugin meant to turn the text editor Atom into a full-fledged IDE. I was one of 6 engineers working on this project meant .
-The project is now discontinued.
+A plugin meant to turn the text editor Atom into a full-fledged IDE. I was one of 6 engineers working on this project, all of which were in different parts of the world, thus requiring a lot of effort to manage effectively.
+The project was discontinued.
 
 ## Eniverse
 
@@ -92,4 +91,4 @@ _https://github.com/marc-mrt/Eniverse-Showcase_
 `javascript` `flow` `react` `css` `styled-components` `webpack` `babel`
 
 An e-sports agency, being the only engineer part of this initiative, I developed its showcase website and hosted it on Digital Ocean.
-The project is now discontinued.
+The project was discontinued.
