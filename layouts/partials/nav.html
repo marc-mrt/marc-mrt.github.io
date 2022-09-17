@@ -6,14 +6,16 @@
       href="{{ $homePage.Permalink }}"
       class="{{ if $currentPage.IsHome }}text-accent{{ end }}"
       >{{ $homePage.Title }}</a
-    >.<a
+    >
+    <a
       href="{{ $blogPage.Permalink }}"
       class="{{ if eq $currentPage.RelPermalink $blogPage.RelPermalink }}text-accent{{ end }}"
       >{{ $blogPage.Title }}</a
-    >.<a
+    >
+    <a
       href="{{ $cvPage.Permalink }}"
       class="{{ if eq $currentPage.RelPermalink $cvPage.RelPermalink }}text-accent{{ end }}"
       >{{ $cvPage.Title }}</a
-    >.
+    >
   </h1>
 </nav>

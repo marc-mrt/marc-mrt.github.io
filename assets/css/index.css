@@ -2,6 +2,7 @@
 :root {
   --color-black: black;
   --color-white: #e5e7eb;
+  --color-lightgrey: #d6dee9;
   --color-grey: #64748b;
   --color-marine: #1e3a8a;
 
@@ -66,6 +67,19 @@ body {
 
 nav {
   margin-bottom: 4rem;
+}
+
+nav > h1 > a {
+  transition: all ease 0.25s;
+
+  padding: 0 0.5rem;
+
+  background-color: var(--color-lightgrey);
+  border-radius: 0.25rem;
+}
+
+nav > h1 > a:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 main {
