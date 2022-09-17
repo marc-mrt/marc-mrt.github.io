@@ -69,8 +69,6 @@ nav {
 }
 
 nav > h1 > a {
-  transition: all ease 0.25s;
-
   padding: 0 0.5rem;
 
   background-color: var(--color-lightgrey);
