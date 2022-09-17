@@ -2,7 +2,7 @@
 title: About
 ---
 
-# Experience.
+# Experience
 
 ## Staff engineer, Passbase
 
@@ -59,7 +59,7 @@ The team was short-handed at the time and looking to expand, which required thor
 
 ---
 
-# Education.
+# Education
 
 ## Epitech
 
@@ -73,7 +73,7 @@ In the final years, most of the program focused on entrepreneurship and innovati
 
 ---
 
-# Projects.
+# Projects
 
 ## Molecule
 
