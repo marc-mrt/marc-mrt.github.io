@@ -2,14 +2,13 @@
 :root {
   --color-black: black;
   --color-white: #e5e7eb;
-  --color-lightgrey: #d6dee9;
+  --color-lightgrey: #dadada;
   --color-grey: #64748b;
-  --color-marine: #1e3a8a;
 
   --primary-color: var(--color-white);
   --secondary-color: var(--color-black);
-  --accent-color: var(--color-marine);
-  --subtle-color: var(--color-grey);
+  --ternary-color: var(--color-grey);
+  --subtle-color: var(--color-lightgrey);
 
   --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -122,7 +121,7 @@ em,
 small {
   font-size: var(--text-font-size-sm);
   line-height: var(--text-line-height-sm);
-  color: var(--subtle-color);
+  color: var(--ternary-color);
 }
 
 a {
@@ -138,8 +137,8 @@ img {
   background-color: unset;
 }
 
-dt {
-  margin-bottom: 1rem;
+dl > dt:not(:last-child) {
+  margin-bottom: 2rem;
 }
 
 /* Pseudo-tag styles for markdown */
@@ -147,7 +146,7 @@ p > code {
   background-color: var(--subtle-color);
 
   font-size: var(--text-font-size-sm);
-  color: var(--primary-color);
+  color: var(--ternary-color);
 
   padding: 0.25rem;
   border-radius: 0.2rem;
@@ -170,7 +169,7 @@ a:not(:first-child) .social-img {
 }
 
 .text-accent {
-  color: var(--accent-color);
+  color: var(--ternary-color);
 }
 
 .flex {
@@ -202,5 +201,5 @@ a:not(:first-child) .social-img {
   position: absolute;
   left: -0.75em;
   content: "#";
-  color: var(--accent-color);
+  color: var(--ternary-color);
 }
