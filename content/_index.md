@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-Hi, Marc Morant, software engineer.
+Hi, my name is Marc Morant, software engineer.
 
 I live in Berlin, where I help architect & build [Passbase](https://passbase.com).
 
