@@ -12,14 +12,10 @@ I've been there many times, made some mistakes, and over the last few tries, I'v
 
 Now that sounds as generic as it gets, and it is. The core of this idea is to visualize a ladder where the lower end is the most rigid and simple, and the higher you go, the more complex it gets. I found that while it's easy to move up the ladder, it is hard to go down. In that regard, I make sure to start as low as possible for as long as possible to remove excessive work.
 
-This imaginative ladder goes like this: **Static content < Interactivity < Computation**.
-
-- Do you need server-side computation power (e.g. SEO)? => **Computation**.
-  _Server-side rendering frameworks (NextJS, NuxtJS)_
-- High data throughput? => **Interactivity**.
-  _Any client-oriented library (React, Angular, Vue) or framework (CRA), SSR is a possibility too (NextJS, NuxtJS)_
-- Anything else => **Static content**.
-  _Static-site generators (Astro, Hugo)_
+The ladder goes: 1. **Static content** < 2. **Interactivity** < 3. **Computation**, and by answering a few questions, you can decide where to stop:
+1. ➡️ High data throughput and/or interactivity? ❌ **Static content**: Static-site generators (Astro, Hugo).
+2. ↘️ Need for server-side computation (e.g. SEO)? ❌ **Interactivity**: Any client-oriented library (React, Angular, Vue) or framework (CRA, NextJS).
+3. ↘️ **Computation**: Server-side rendering frameworks (NextJS, NuxtJS).
 
 For each stage, its own set of rules and possibilities, of course, at which point I'd argue: whatever you're most comfortable with. It is software you are bound to maintain, might as well get comfy.
 
