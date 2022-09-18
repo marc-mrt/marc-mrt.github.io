@@ -110,6 +110,7 @@ h2 {
 }
 
 p,
+ol,
 ul {
   font-size: var(--text-font-size);
   line-height: var(--text-line-height);
