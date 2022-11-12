@@ -28,7 +28,7 @@
 /* Variable responsivness */
 @media screen and (max-width: 35.5em) {
   :root {
-    --body-padding: 6em 0 0 0;
+    --body-padding: 4em 1em 0;
 
     --text-font-size-sm: 0.5rem;
     --text-font-size: 0.875rem;
@@ -68,14 +68,18 @@ nav {
   margin-bottom: 4rem;
 }
 
-nav > h1 > a {
-  padding: 0 0.5rem;
+nav > a {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -0.1em;
+
+  padding: 0.5rem;
 
   background-color: var(--color-lightgrey);
   border-radius: 0.25rem;
 }
 
-nav > h1 > a:not(:last-child) {
+nav > a:not(:last-child) {
   margin-right: 0.5rem;
 }
 
