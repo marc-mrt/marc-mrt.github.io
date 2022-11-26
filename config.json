@@ -3,7 +3,6 @@
   "author": "Marc Morant",
   "title": "Marc Morant",
   "languageCode": "en-us",
-  "uglyURLs": true,
   "enableRobotsTXT": true,
   "permalinks": {
     "/blog/": "/blog/:year:month:day/:title"
