@@ -1,6 +1,6 @@
-# morant.me
+# marc-mrt.github.io
 
-[![CI](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml/badge.svg)](https://github.com/marc-mrt/morant.me/actions/workflows/main.yml)
+[![CI](https://github.com/marc-mrt/marc-mrt.github.io/actions/workflows/main.yml/badge.svg)](https://github.com/marc-mrt/marc-mrt.github.io/actions/workflows/main.yml)
 
 My personal website.
 
