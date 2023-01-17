@@ -189,10 +189,6 @@ a:not(:first-child) .social-img {
   align-content: center;
 }
 
-.baseline {
-  align-items: baseline;
-}
-
 .italic {
   font-style: italic;
 }
