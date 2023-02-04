@@ -203,3 +203,49 @@ a:not(:first-child) .social-img {
   content: "#";
   color: var(--ternary-color);
 }
+
+/* Printing specific styles */
+@media print {
+  :root {
+    --body-padding: 2em 0;
+  }
+
+  header,
+  footer {
+    display: none !important;
+  }
+
+  h1 {
+    font-size: 1.25em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  p,
+  ol,
+  ul {
+    font-size: 0.75em;
+    line-height: 1em;
+  }
+
+  em,
+  small {
+    font-size: 0.65em;
+  }
+
+  p > code {
+    background-color: unset;
+    font-style: italic;
+    padding: 0;
+  }
+
+  p > code:not(:last-child):after {
+    content: ",";
+  }
+
+  hr:first-of-type {
+    page-break-after: always;
+  }
+}
