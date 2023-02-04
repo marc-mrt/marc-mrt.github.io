@@ -8,16 +8,16 @@ title: About
 
 _Aug '19 - Current_
 
-`go` `sql` `typescript` `nextjs` `react` `webpack` `styled-components` `aws` `terraform` `ddd` `architecture` `leadership` `management` `hiring` `security`
+`go` `ruby` `rails` `sql` `typescript` `react` `nextjs` `react` `webpack` `styled-components` `aws` `terraform` `ddd` `architecture` `leadership` `management` `hiring` `security`
 
 A VC-backed startup providing identity verification services worldwide.
 
 I joined in the early stages, building the first versions of 3 core apps' frontends, and moved on to take part in the hiring process of the frontend team, leading them to maintain and extend the apps.
 
-After achieving product-market fit, the engineering team architectured a new product using the latest technologies, following a domain-driven design.
-I took part in the entire process, end to end, where I had the opportunity to jump on the other side of the fence, learning new technologies as well.
+After achieving product-market fit, the engineering team architectured a new product using new technologies, following a domain-driven design.
+I took part in the entire process where I had the opportunity to actively contribute on all sides: frontend, backend, and platform.
 
-We are bringing that new product to life in an iterative fashion, improving our technological security posture, and migrating our customer base.
+Currently iterating on our product suite, delivering bit-sized quality features to better suit the needs of a growing customer base.
 
 ## Software engineer, Recare
 
