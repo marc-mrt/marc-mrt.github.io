@@ -2,11 +2,6 @@
   {{ $currentPage := . }} {{ $homePage := .GetPage "/" }} {{ $blogPage :=
   .GetPage "/blog" }} {{ $cvPage := .GetPage "/about" }}
   <a
-    href="{{ $homePage.Permalink }}"
-    class="{{ if $currentPage.IsHome }}text-accent{{ end }}"
-    >{{ $homePage.Title }}</a
-  >
-  <a
     href="{{ $blogPage.Permalink }}"
     class="{{ if eq $currentPage.RelPermalink $blogPage.RelPermalink }}text-accent{{ end }}"
     >{{ $blogPage.Title }}</a
