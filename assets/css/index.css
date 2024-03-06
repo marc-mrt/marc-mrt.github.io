@@ -25,7 +25,7 @@
   --text-line-height-lg: 2.5rem;
 }
 
-/* Variable responsivness */
+/* Variable responsiveness */
 @media screen and (max-width: 35.5em) {
   :root {
     --body-padding: 4em 1em 0;
