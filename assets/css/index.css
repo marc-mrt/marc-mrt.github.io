@@ -48,6 +48,8 @@
   margin: 0;
   border-width: 0;
   box-sizing: border-box;
+
+  font-weight: 300;
 }
 
 html,
@@ -77,7 +79,6 @@ header {
 
 header > a {
   text-transform: uppercase;
-  letter-spacing: -0.1em;
 
   font-style: italic;
 
@@ -119,13 +120,8 @@ hr {
 h1 {
   font-size: var(--text-font-size-lg);
   line-height: var(--text-line-height-lg);
-  letter-spacing: -0.075em;
 
   margin: 0 0 1em 0;
-}
-
-h2 {
-  letter-spacing: -0.05em;
 }
 
 p,
