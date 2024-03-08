@@ -142,7 +142,7 @@ small {
 a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: var(--ternary-color);
+  text-decoration-color: inherit;
 }
 
 a:hover {
