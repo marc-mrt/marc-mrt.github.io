@@ -72,14 +72,6 @@ header {
   margin: 0 0 3rem 0;
 }
 
-header > a {
-  text-transform: uppercase;
-
-  font-style: italic;
-
-  color: var(--text-accent-color);
-}
-
 header > h1 {
   position: relative;
   z-index: 0;
@@ -136,7 +128,7 @@ small {
 
 a {
   color: var(--text-accent-color);
-  text-decoration: underline transparent;
+  text-decoration: underline var(--subtle-color);
   transition: text-decoration 300ms ease;
 }
 
