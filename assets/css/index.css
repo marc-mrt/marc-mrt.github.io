@@ -141,14 +141,14 @@ small {
 }
 
 a {
+  font-weight: 400;
   color: var(--text-accent-color);
   text-decoration: underline var(--text-subtle-color);
   transition: text-decoration 300ms ease;
 }
 
 a:hover {
-  text-decoration: underline inherit;
-  text-decoration-color: inherit;
+  text-decoration: underline var(--text-accent-color);
 }
 
 img {
