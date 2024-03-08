@@ -5,9 +5,27 @@ type: about
 
 # Experience
 
+## Senior software engineer, Midlane
+
+_Nov '23 - Current_
+
+`typescript` `next` `react` `sql` `product`
+
+Creating a simple and effective product suite for HR processes in the blue-collar world.
+Currently delivering bit-sized quality features to find product market fit.
+
+## Lead engineer, Klarna
+
+_Jul '23 - Oct '23_
+
+`typescript` `nest` `react` `sql` `react-native` `leadership` `product`
+
+In the 'Card & Banking' domain, I was poised to help better the consumer experience and the teams around it.
+Working on the Klarna app, shipping both to mobile & the web.
+
 ## Staff engineer, Passbase
 
-_Aug '19 - Current_
+_Aug '19 - Jun '23_
 
 `go` `ruby` `rails` `sql` `typescript` `react` `nextjs` `react` `webpack` `styled-components` `aws` `terraform` `ddd` `architecture` `leadership` `management` `hiring` `security`
 
@@ -18,7 +36,7 @@ I joined in the early stages, building the first versions of 3 core apps' fronte
 After achieving product-market fit, the engineering team architectured a new product using new technologies, following a domain-driven design.
 I took part in the entire process where I had the opportunity to actively contribute on all sides: frontend, backend, and platform.
 
-Currently iterating on our product suite, delivering bit-sized quality features to better suit the needs of a growing customer base.
+The company was eventually sold & I had to move on.
 
 ## Software engineer, Recare
 
