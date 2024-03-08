@@ -3,7 +3,8 @@
   --background-color: #e5e7eb;
   --text-color: black;
   --text-accent-color: #2a6ac2;
-  --subtle-color: #dadada;
+  --text-subtle-color: #b7b7b7;
+  --background-subtle-color: #dadada;
 
   --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -99,20 +100,20 @@ header > h1::before {
   width: 2.5rem;
   height: 100%;
   transform: skew(-20deg);
-  background: var(--subtle-color);
+  background: var(--background-subtle-color);
   z-index: -1;
 }
 
 footer {
   padding: 1rem;
   border-top-width: 1px;
-  border-color: var(--subtle-color);
+  border-color: var(--background-subtle-color);
   border-style: solid;
 }
 
 hr {
   border-top-width: 1px;
-  border-color: var(--subtle-color);
+  border-color: var(--background-subtle-color);
   border-style: solid;
   margin: 1em 0 2em;
 }
@@ -136,12 +137,12 @@ em,
 small {
   font-size: var(--text-font-size-sm);
   line-height: var(--text-line-height-sm);
-  color: var(--text-accent-color);
+  color: var(--text-subtle-color);
 }
 
 a {
   color: var(--text-accent-color);
-  text-decoration: underline var(--subtle-color);
+  text-decoration: underline var(--text-subtle-color);
   transition: text-decoration 300ms ease;
 }
 
@@ -160,7 +161,7 @@ dl > dt:not(:last-child) {
 
 /* Pseudo-tag styles for markdown */
 p > code {
-  background-color: var(--subtle-color);
+  background-color: var(--background-subtle-color);
 
   font-size: var(--text-font-size-sm);
   color: var(--text-accent-color);
