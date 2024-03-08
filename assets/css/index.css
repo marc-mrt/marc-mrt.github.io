@@ -20,6 +20,18 @@
   --text-line-height-lg: 2.5rem;
 }
 
+/* Animations */
+@keyframes fadeInFromTop {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Variable responsiveness */
 @media screen and (max-width: 35.5em) {
   :root {
@@ -63,6 +75,7 @@ body {
 
 main {
   margin-bottom: 2rem;
+  animation: fadeInFromTop 400ms;
 }
 
 header {
