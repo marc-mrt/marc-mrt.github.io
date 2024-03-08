@@ -99,7 +99,7 @@ header > h1::before {
   width: 2.5rem;
   height: 100%;
   transform: skew(-20deg);
-  background: var(--color-lightgrey);
+  background: var(--subtle-color);
   z-index: -1;
 }
 
