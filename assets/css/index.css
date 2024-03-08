@@ -147,7 +147,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-lightgrey);
+  text-decoration-color: var(--ternary-color);
 }
 
 img {
