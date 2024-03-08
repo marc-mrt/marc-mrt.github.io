@@ -4,7 +4,7 @@ date: "2023-01-17"
 ---
 
 In the journey to shipping this website, I've made it a mission to keep things painfully stupid.
-It worked exceptionally well when iterating on the tech stack _([hugo](https://gohugo.io/))_, design _([pure css](https://purecss.io/))_, automation _([github actions](https://docs.github.com/en/actions))_... but then came the time I had to deploy all this.
+It worked exceptionally well when iterating on the tech stack ([hugo](https://gohugo.io/)), design ([pure css](https://purecss.io/)), automation ([github actions](https://docs.github.com/en/actions))... but then came the time I had to deploy all this.
 
 When I think of deploying a static website, my experience screams AWS S3 + Cloudfront + Route 53.
 Thing is, I even developed a [terraform module](https://github.com/marc-mrt/infrastructure-modules/tree/master/modules/aws_static_website) that sets this up in a tidy module, so all I needed to do is `terraform apply` it, literally.
