@@ -22,18 +22,6 @@
   --text-line-height-lg: 2.5rem;
 }
 
-/* Animations */
-@keyframes fadeInFromTop {
-  0% {
-    transform: translateY(1rem);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 /* Variable responsiveness */
 @media screen and (max-width: 35.5em) {
   :root {
@@ -103,10 +91,6 @@ header {
   justify-content: space-between;
 }
 
-main {
-  animation: fadeInFromTop 400ms;
-}
-
 footer {
   display: flex;
   align-items: center;
@@ -120,7 +104,6 @@ h1 {
 
 p,
 ol,
-dt,
 ul {
   margin-bottom: 1rem;
 }
@@ -201,4 +184,75 @@ p > code {
   hr:first-of-type {
     page-break-after: always;
   }
+}
+
+
+/* Fade in cascade the text contents of main */
+@keyframes fadeInFromTop {
+  0% {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+main > * {
+  opacity: 0;
+}
+
+main > :nth-child(1) {
+  animation: 400ms fadeInFromTop forwards;
+}
+
+main > :nth-child(2) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 100ms;
+}
+
+main > :nth-child(3) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 200ms;
+}
+
+main > :nth-child(4) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 300ms;
+}
+
+main > :nth-child(5) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 400ms;
+}
+
+main > :nth-child(6) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 500ms;
+}
+
+main > :nth-child(7) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 600ms;
+}
+
+main > :nth-child(8) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 700ms;
+}
+
+main > :nth-child(9) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 800ms;
+}
+
+main > :nth-child(10) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 900ms;
+}
+
+main > :nth-child(n+10) {
+  animation: 400ms fadeInFromTop forwards;
+  animation-delay: 1s;
 }

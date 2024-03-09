@@ -1,13 +1,11 @@
 {{ define "main" }}
   {{ .Content }}
-  <dl>
     {{ range .Pages }}
-    <dt>
+    <div>
       <h2>
         <a href="{{ .Permalink }}"> {{ .Title }}</a>
       </h2>
       <small> {{ .Date.Format "Jan 2, 2006" }}</small>
-    </dt>
+    </div>
     {{ end }}
-  </dl>
 {{ end }}
