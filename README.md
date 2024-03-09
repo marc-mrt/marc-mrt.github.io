@@ -6,4 +6,4 @@ My personal website.
 
 ## Credits
 
-Made with [Hugo](https://gohugo.io) & [Pure](https://purecss.io/).
+Made with [Hugo](https://gohugo.io).

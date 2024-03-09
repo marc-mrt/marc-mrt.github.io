@@ -3,18 +3,6 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/base-min.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-min.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css"
-/>
 
 <!-- Custom CSS -->
 {{ $css := resources.Get "css/index.css" | minify | resources.Fingerprint

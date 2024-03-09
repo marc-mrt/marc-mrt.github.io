@@ -11,6 +11,7 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --body-padding: 12em 0 0 0;
+  --body-width: 90%;
 
   --text-font-size-sm: 0.75rem;
   --text-font-size: 1rem;
@@ -48,6 +49,26 @@
   }
 }
 
+@media screen and (min-width: 35.5em) {
+  :root { --body-width: 80%; }
+}
+
+@media screen and (min-width: 48em) {
+  :root { --body-width: 60%; }
+}
+
+@media screen and (min-width: 64em) {
+  :root { --body-width: 50%; }
+}
+
+@media screen and (min-width: 80em) {
+  :root { --body-width: 40%; }
+}
+
+@media screen and (min-width: 120em) {
+  :root { --body-width: 30%; }
+}
+
 /* Global styles */
 * {
   background-color: var(--background-color);
@@ -60,76 +81,47 @@
   font-weight: 300;
 }
 
-html,
-button,
-input,
-select,
-textarea,
-.pure-g [class*="pure-u"] {
-  font-family: var(--font-family);
-}
-
 /* Element styles */
 body {
   padding: var(--body-padding);
+  width: var(--body-width);
+
+  font-family: var(--font-family);
+  font-size: var(--text-font-size);
+  line-height: var(--text-line-height);
+
+  margin: 0 auto;
 }
 
-main {
-  margin-bottom: 2rem;
-  animation: fadeInFromTop 400ms;
+body > * {
+  margin-bottom: 3rem;
 }
 
 header {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 3rem 0;
 }
 
-header > h1 {
-  position: relative;
-  z-index: 0;
-  margin: 0;
-}
-
-header > h1::before {
-  content: "";
-  position: absolute;
-  left: -0.5rem;
-  bottom: -0.25rem;
-  width: 2.5rem;
-  height: 100%;
-  transform: skew(-20deg);
-  background: var(--background-subtle-color);
-  z-index: -1;
+main {
+  animation: fadeInFromTop 400ms;
 }
 
 footer {
-  padding: 1rem;
-  border-top-width: 1px;
-  border-color: var(--background-subtle-color);
-  border-style: solid;
-}
-
-hr {
-  border-top-width: 1px;
-  border-color: var(--background-subtle-color);
-  border-style: solid;
-  margin: 1em 0 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
   font-size: var(--text-font-size-lg);
   line-height: var(--text-line-height-lg);
-
-  margin: 0 0 1em 0;
 }
 
 p,
 ol,
+dt,
 ul {
-  font-size: var(--text-font-size);
-  line-height: var(--text-line-height);
   margin-bottom: 1rem;
 }
 
@@ -138,6 +130,10 @@ small {
   font-size: var(--text-font-size-sm);
   line-height: var(--text-line-height-sm);
   color: var(--text-subtle-color);
+}
+
+h1:has(a) {
+  margin-bottom: 2rem;
 }
 
 a {
@@ -151,56 +147,14 @@ a:hover {
   text-decoration: underline var(--text-accent-color);
 }
 
-img {
-  background-color: unset;
-}
-
-dl > dt:not(:last-child) {
-  margin-bottom: 2rem;
-}
-
 /* Pseudo-tag styles for markdown */
 p > code {
   background-color: var(--background-subtle-color);
 
   font-size: var(--text-font-size-sm);
-  color: var(--text-accent-color);
 
   padding: 0.25rem;
   border-radius: 0.2rem;
-}
-
-/* Custom classes */
-.text-accent {
-  color: var(--text-accent-color);
-}
-
-.flex {
-  display: flex;
-}
-
-.col {
-  flex-direction: column;
-}
-
-.center {
-  align-items: center;
-  align-content: center;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.anchor {
-  position: relative;
-}
-
-.anchor a:hover::before {
-  position: absolute;
-  left: -0.75em;
-  content: "#";
-  color: var(--text-accent-color);
 }
 
 /* Printing specific styles */
