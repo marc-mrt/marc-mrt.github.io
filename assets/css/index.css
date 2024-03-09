@@ -87,8 +87,12 @@ body > * {
 
 header {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
+}
+
+header > a {
+  white-space: nowrap;
 }
 
 footer {
