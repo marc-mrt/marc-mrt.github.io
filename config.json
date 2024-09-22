@@ -6,5 +6,14 @@
   "enableRobotsTXT": true,
   "permalinks": {
     "/blog/": "/blog/:year:month:day/:title"
+  },
+  "deployment": {
+    "matchers": [
+      {
+        "pattern": "^.+\\.(js|css|svg|ttf|woff2)$",
+        "cacheControl": "max-age=31536000, no-transform, public",
+        "gzip": true
+      }
+    ]
   }
 }
