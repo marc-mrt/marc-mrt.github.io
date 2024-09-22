@@ -1,262 +1,272 @@
 /* Variable declaration */
 :root {
-  --background-color: #e5e7eb;
-  --text-color: black;
-  --text-accent-color: #2a6ac2;
-  --text-subtle-color: #b7b7b7;
-  --background-subtle-color: #dadada;
+    --background-color: #e5e7eb;
+    --text-color: black;
+    --text-accent-color: #1c4987;
+    --text-subtle-color: #4a4a4a;
+    --background-subtle-color: #dadada;
 
-  --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 
-  --body-padding: 12em 0 0 0;
-  --body-width: 90%;
+    --body-padding: 12em 0 0 0;
+    --body-width: 90%;
 
-  --text-font-size-sm: 0.75rem;
-  --text-font-size: 1rem;
-  --text-font-size-lg: 2.25rem;
+    --text-font-size-sm: 0.75rem;
+    --text-font-size: 1rem;
+    --text-font-size-lg: 2.25rem;
 
-  --text-line-height-sm: 1rem;
-  --text-line-height: 1.75rem;
-  --text-line-height-lg: 2.5rem;
+    --text-line-height-sm: 1rem;
+    --text-line-height: 1.75rem;
+    --text-line-height-lg: 2.5rem;
 }
 
 /* Variable responsiveness */
 @media screen and (max-width: 35.5em) {
-  :root {
-    --body-padding: 4em 1em 0;
+    :root {
+        --body-padding: 4em 1em 0;
 
-    --text-font-size-sm: 0.5rem;
-    --text-font-size: 0.875rem;
-    --text-font-size-lg: 2rem;
+        --text-font-size-sm: 0.5rem;
+        --text-font-size: 0.875rem;
+        --text-font-size-lg: 2rem;
 
-    --text-line-height-sm: 0.75rem;
-    --text-line-height: 1.5rem;
-    --text-line-height-lg: 2.25rem;
-  }
+        --text-line-height-sm: 0.75rem;
+        --text-line-height: 1.5rem;
+        --text-line-height-lg: 2.25rem;
+    }
 }
 
 @media screen and (min-width: 35.5em) {
-  :root { --body-width: 80%; }
+    :root {
+        --body-width: 80%;
+    }
 }
 
 @media screen and (min-width: 48em) {
-  :root { --body-width: 60%; }
+    :root {
+        --body-width: 60%;
+    }
 }
 
 @media screen and (min-width: 64em) {
-  :root { --body-width: 50%; }
+    :root {
+        --body-width: 50%;
+    }
 }
 
 @media screen and (min-width: 80em) {
-  :root { --body-width: 40%; }
+    :root {
+        --body-width: 40%;
+    }
 }
 
 @media screen and (min-width: 120em) {
-  :root { --body-width: 30%; }
+    :root {
+        --body-width: 30%;
+    }
 }
 
 /* Global styles */
 * {
-  background-color: var(--background-color);
-  color: var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
 
-  margin: 0;
-  border-width: 0;
-  box-sizing: border-box;
+    margin: 0;
+    border-width: 0;
+    box-sizing: border-box;
 
-  font-weight: 300;
+    font-weight: 300;
 }
 
 /* Element styles */
 body {
-  padding: var(--body-padding);
-  width: var(--body-width);
+    padding: var(--body-padding);
+    width: var(--body-width);
 
-  font-family: var(--font-family);
-  font-size: var(--text-font-size);
-  line-height: var(--text-line-height);
+    font-family: var(--font-family);
+    font-size: var(--text-font-size);
+    line-height: var(--text-line-height);
 
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 body > * {
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 
 header {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
 }
 
 header > a {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
-  font-size: var(--text-font-size-lg);
-  line-height: var(--text-line-height-lg);
+    font-size: var(--text-font-size-lg);
+    line-height: var(--text-line-height-lg);
 }
 
 p,
 ol,
 ul {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 em,
 small {
-  font-size: var(--text-font-size-sm);
-  line-height: var(--text-line-height-sm);
-  color: var(--text-subtle-color);
+    font-size: var(--text-font-size-sm);
+    line-height: var(--text-line-height-sm);
+    color: var(--text-subtle-color);
 }
 
 h1:has(a) {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 a {
-  font-weight: 400;
-  color: var(--text-accent-color);
-  text-decoration: underline var(--text-subtle-color);
-  transition: text-decoration 300ms ease;
+    font-weight: 400;
+    color: var(--text-accent-color);
+    text-decoration: underline var(--text-subtle-color);
+    transition: text-decoration 300ms ease;
 }
 
 a:hover {
-  text-decoration: underline var(--text-accent-color);
+    text-decoration: underline var(--text-accent-color);
 }
 
 /* Pseudo-tag styles for markdown */
 p > code {
-  background-color: var(--background-subtle-color);
+    background-color: var(--background-subtle-color);
 
-  font-size: var(--text-font-size-sm);
+    font-size: var(--text-font-size-sm);
 
-  padding: 0.25rem;
-  border-radius: 0.2rem;
+    padding: 0.25rem;
+    border-radius: 0.2rem;
 }
 
 /* Printing specific styles */
 @media print {
-  :root {
-    --body-padding: 2em 0;
-  }
+    :root {
+        --body-padding: 2em 0;
+    }
 
-  header,
-  footer {
-    display: none !important;
-  }
+    header,
+    footer {
+        display: none !important;
+    }
 
-  h1 {
-    font-size: 1.25em;
-  }
+    h1 {
+        font-size: 1.25em;
+    }
 
-  h2 {
-    font-size: 1em;
-  }
+    h2 {
+        font-size: 1em;
+    }
 
-  p,
-  ol,
-  ul {
-    font-size: 0.75em;
-    line-height: 1em;
-  }
+    p,
+    ol,
+    ul {
+        font-size: 0.75em;
+        line-height: 1em;
+    }
 
-  em,
-  small {
-    font-size: 0.65em;
-  }
+    em,
+    small {
+        font-size: 0.65em;
+    }
 
-  p > code {
-    background-color: unset;
-    font-style: italic;
-    padding: 0;
-  }
+    p > code {
+        background-color: unset;
+        font-style: italic;
+        padding: 0;
+    }
 
-  p > code:not(:last-child):after {
-    content: ",";
-  }
+    p > code:not(:last-child):after {
+        content: ",";
+    }
 
-  hr:first-of-type {
-    page-break-after: always;
-  }
+    hr:first-of-type {
+        page-break-after: always;
+    }
 }
-
 
 /* Fade in cascade the text contents of main */
 @keyframes fadeInFromTop {
-  0% {
-    transform: translateY(0.5rem);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(0.5rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 main > * {
-  opacity: 0;
+    opacity: 0;
 }
 
 main > :nth-child(1) {
-  animation: 400ms fadeInFromTop forwards;
+    animation: 400ms fadeInFromTop forwards;
 }
 
 main > :nth-child(2) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 100ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 100ms;
 }
 
 main > :nth-child(3) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 200ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 200ms;
 }
 
 main > :nth-child(4) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 300ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 300ms;
 }
 
 main > :nth-child(5) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 400ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 400ms;
 }
 
 main > :nth-child(6) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 500ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 500ms;
 }
 
 main > :nth-child(7) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 600ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 600ms;
 }
 
 main > :nth-child(8) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 700ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 700ms;
 }
 
 main > :nth-child(9) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 800ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 800ms;
 }
 
 main > :nth-child(10) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 900ms;
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 900ms;
 }
 
-main > :nth-child(n+10) {
-  animation: 400ms fadeInFromTop forwards;
-  animation-delay: 1s;
+main > :nth-child(n + 10) {
+    animation: 400ms fadeInFromTop forwards;
+    animation-delay: 1s;
 }
