@@ -1,15 +1,16 @@
 <meta charset="UTF-8" />
 <meta
-  name="viewport"
-  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
+<meta name="description" content="Marc's internet thing" />
 
 <!-- Custom CSS -->
 {{ $css := resources.Get "css/index.css" | minify | resources.Fingerprint
 "sha512"}}
 <link
-  rel="stylesheet"
-  href="{{ $css.Permalink }}"
-  integrity="{{ $css.Data.Integrity }}"
-  crossorigin="anonymous"
+    rel="stylesheet"
+    href="{{ $css.Permalink }}"
+    integrity="{{ $css.Data.Integrity }}"
+    crossorigin="anonymous"
 />
