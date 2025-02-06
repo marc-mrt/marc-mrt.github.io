@@ -16,7 +16,7 @@
       {{ end }}
     {{ end }}
     {{ if .Page.Parent }}
-      <a href="{{ .Parent.Permalink }}">go back</a>
+      <a id="back-arrow" aria-label="Go back" href="{{ .Parent.Permalink }}"><-</a>
     {{ end }}
     </header>
     <main>
