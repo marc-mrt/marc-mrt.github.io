@@ -25,6 +25,8 @@ _Jul '23 - Oct '23_
 In the 'Card & Banking' domain, I was poised to help better the consumer experience and the teams around it.
 Working on the Klarna app, shipping both to mobile & the web.
 
+I moved on after a once in a lifetime opportunity presented itself.
+
 ## Staff engineer, Passbase
 
 _Aug '19 - Jun '23_
