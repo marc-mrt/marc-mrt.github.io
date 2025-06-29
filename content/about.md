@@ -5,9 +5,7 @@ type: about
 
 # Experience
 
-## Product engineer, Midlane
-
-_Nov '23 - Jun '25_
+{{< experience-section-title job="Product engineer" company="Midlane" timeframe="Nov '23 - Jun '25" >}}
 
 `typescript` `next` `react` `sql` `aws` `lamba` `security` `product`
 
@@ -17,9 +15,7 @@ a market that was abandoned by most in the sector.
 The team focused on delivering bit-sized quality features to find product market fit.
 I helped shape the product and the team from the ground up, balancing speed and quality in a forever changing environment.
 
-## Lead engineer, Klarna
-
-_Jul '23 - Oct '23_
+{{< experience-section-title job="Lead engineer" company="Klarna" timeframe="Jul '23 - Oct '23" >}}
 
 `typescript` `nest` `react` `sql` `react-native` `leadership` `product`
 
@@ -28,9 +24,7 @@ Working on the Klarna app, shipping both to mobile & the web.
 
 I moved on after a once in a lifetime opportunity presented itself.
 
-## Staff engineer, Passbase
-
-_Aug '19 - Jun '23_
+{{< experience-section-title job="Staff engineer" company="Passbase" timeframe="Aug '19 - Jun '23" >}}
 
 `go` `ruby` `rails` `sql` `typescript` `react` `nextjs` `react` `webpack` `styled-components` `aws` `terraform` `ddd` `architecture` `leadership` `management` `hiring` `security`
 
@@ -43,9 +37,7 @@ I took part in the entire process where I had the opportunity to actively contri
 
 The company was eventually sold & I had to move on.
 
-## Software engineer, Recare
-
-_Jun. '18 - Mar. '20_
+{{< experience-section-title job="Software engineer" company="Recare" timeframe="Jun. '18 - Mar. '20" >}}
 
 `typescript` `javascript` `flow` `react` `redux` `graphql` `rest` `webpack` `babel` `e2e encryption` `cryptography`
 
@@ -59,9 +51,7 @@ We relied on our e2e integration test to validate that transition.
 
 While extending its market ambition towards France, the products required internationalization, a challenge we decided to tackle by building a new app from scratch to update and synchronize terms within all our apps & codebases.
 
-## Frontend developer, Intern, Mhirba
-
-_Apr. '17 - Aug. '17_
+{{< experience-section-title job="Frontend developer (intern)" company="Mhirba" timeframe="Apr. '17 - Aug. '17" >}}
 
 `javascript` `flow` `react` `angular` `vue` `electron` `iot` `prototyping`
 
@@ -70,9 +60,7 @@ A craft studio for hire, managed by its only founder, working with big companies
 I developed a frontend for a cross-platform app, assessing various technologies for the job.
 Fast-paced iteration was essential to ensure the prototype fits the customer's needs with quick feedback loops.
 
-## Game developer, Intern, Wolcen
-
-_Sep. '15 - Dec. '15_
+{{< experience-section-title job="Game developer (intern)" company="Wolcen" timeframe="Sep. '15 - Dec. '15" >}}
 
 `cpp` `actionscript 2.0` `cry engine 3` `entity-component-system` `documentation`
 
@@ -85,9 +73,7 @@ The team was short-handed at the time and looking to expand, which required thor
 
 # Education
 
-## Epitech
-
-_Sep. '14 - Aug. '19_
+{{< experience-section-title job="Master" company="Epitech" timeframe="Sep. '14 - Aug. '19" >}}
 
 `c` `cpp` `java` `sql` `tdd` `architecture` `management`
 

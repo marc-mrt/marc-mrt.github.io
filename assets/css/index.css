@@ -162,6 +162,8 @@ p > code {
 
     padding: 0.25rem;
     border-radius: 0.2rem;
+
+    font-weight: 200;
 }
 
 /* Printing specific styles */
@@ -188,6 +190,7 @@ p > code {
     ul {
         font-size: 0.75em;
         line-height: 1em;
+        margin-bottom: 1em;
     }
 
     em,
@@ -198,6 +201,8 @@ p > code {
     p > code {
         background-color: unset;
         font-style: italic;
+        font-weight: 200;
+        font-size: 0.75em;
         padding: 0;
     }
 
@@ -278,4 +283,11 @@ main > :nth-child(10) {
 main > :nth-child(n + 10) {
     animation: 400ms fadeInFromTop forwards;
     animation-delay: 1s;
+}
+
+/* Custom classes */
+.experience-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }

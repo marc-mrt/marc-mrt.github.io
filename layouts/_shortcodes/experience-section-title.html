@@ -1,0 +1,7 @@
+{{ .Store.Set "href" (print .Params.job " " .Params.company | lower) }}
+{{ .Store.Set "link" (replace (.Store.Get "href") " " "-") }}
+
+<span class="experience-title">
+    <h2 id="{{ .Store.Get "link" }}"><a href="#{{ .Store.Get "link" }}">{{ .Params.job }}, {{ .Params.company }}</a></h2>
+    <em>{{ .Params.timeframe }}</em>
+</span>
