@@ -105,16 +105,15 @@ header > a {
 }
 
 #back-arrow {
-    font-size: var(--text-font-size-lg);
     position: absolute;
     text-decoration: none;
     top: 0;
     left: calc(var(--text-font-size-lg) * -1);
 }
 
-#back-arrow:hover {
-    transition: all ease 250ms;
-    transform: translateX(-0.25rem);
+#back-arrow:hover > svg {
+    transition: stroke ease 250ms;
+    stroke: var(--text-accent-color) ;
 }
 
 footer {
@@ -125,7 +124,6 @@ footer {
 
 h1 {
     font-size: var(--text-font-size-lg);
-    line-height: var(--text-line-height-lg);
 }
 
 p,
