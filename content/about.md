@@ -13,6 +13,7 @@ _Nov '23 - Jun '25_
 
 An early-stage start-up which aimed to create a simple and effective product suite for HR processes in the blue-collar world,
 a market that was abandoned by most in the sector.
+
 The team focused on delivering bit-sized quality features to find product market fit.
 I helped shape the product and the team from the ground up, balancing speed and quality in a forever changing environment.
 
