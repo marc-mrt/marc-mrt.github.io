@@ -5,7 +5,7 @@ type: about
 
 # Experience
 
-## Senior software engineer, Midlane
+## Product engineer, Midlane
 
 _Nov '23 - Jun '25_
 
