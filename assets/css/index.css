@@ -146,12 +146,29 @@ h1:has(a) {
 a {
     font-weight: 400;
     color: var(--text-accent-color);
-    text-decoration: underline var(--text-subtle-color);
+    text-decoration: none;
     transition: text-decoration 300ms ease;
 }
 
-a:hover {
-    text-decoration: underline var(--text-accent-color);
+/* Anchor link styles for headings */
+h1:has(> a[href^="#"]), h2:has(> a[href^="#"]) {
+    position: relative;
+}
+
+h1:has(> a[href^="#"])::after,
+h2:has(> a[href^="#"])::after {
+    content: "#";
+    color: var(--text-accent-color);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    position: absolute;
+    bottom: 0;
+    left: -.75em;
+}
+
+h1:hover:has(> a[href^="#"])::after,
+h2:hover:has(> a[href^="#"])::after {
+    opacity: 1;
 }
 
 /* Pseudo-tag styles for markdown */
