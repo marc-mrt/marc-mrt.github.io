@@ -208,6 +208,7 @@ h3:hover:has(> a[href^="#"])::after {
     }
 
     h2 {
+        margin-top: 1.25em;
         font-size: 1.25em;
         line-height: 1.25em;
     }
