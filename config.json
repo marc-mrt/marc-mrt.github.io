@@ -4,6 +4,7 @@
   "title": "Marc Morant",
   "languageCode": "en-us",
   "enableRobotsTXT": true,
+  "disableKinds": ["taxonomy", "term"],
   "permalinks": {
     "/blog/": "/blog/:year:month:day/:title"
   },
