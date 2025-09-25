@@ -10,7 +10,7 @@ type: about
 `typescript` `next` `react` `sql` `aws` `lamba` `security` `product`
 
 An early-stage start-up which aimed to create a simple and effective product suite for HR processes in the blue-collar world,
-a market that was abandoned by most in the sector.
+a market that most abandoned in the sector.
 
 The team focused on delivering bit-sized quality features to find product market fit.
 I helped shape the product and the team from the ground up, balancing speed and quality in a forever changing environment.
@@ -44,9 +44,9 @@ The company was eventually sold & I had to move on.
 A patient-transfer service for clinics in Germany.
 
 In this role, I was part of the team that maintained and extended an existing product suite of 3 apps.
-Dealing with patient data, it was of utmost importance to ensure the company had no view into it, for which we used and maintained our e2e encryption solution.
+Dealing with patient data, it was of the utmost importance to ensure the company had no view into it, for which we used and maintained our e2e encryption solution.
 
-After joining, it became evident that the codebase was hard to maintain. We migrated the entire codebase from the Flow type system to TypeScript, a procedure we could only conduct in full at once.
+After joining, it became clear that the codebase was hard to maintain. We migrated the entire codebase from the Flow type system to TypeScript, a procedure we could only conduct in full at once.
 We relied on our e2e integration test to validate that transition.
 
 While extending its market ambition towards France, the products required internationalization, a challenge we decided to tackle by building a new app from scratch to update and synchronize terms within all our apps & codebases.
@@ -77,7 +77,7 @@ The team was short-handed at the time and looking to expand, which required thor
 
 `c` `cpp` `java` `sql` `tdd` `architecture` `management`
 
-During this 5-year program, I've learned to love programming, embrace new technologies and navigate a lot of different angles to software engineering.
+During this 5-year program, I've learned to love programming, embrace new technologies, and navigate a lot of different angles to software engineering.
 
 In the final years, most of the program focused on entrepreneurship and innovation within the sector, learnings I carry with me to this day when working on tech products.
 
