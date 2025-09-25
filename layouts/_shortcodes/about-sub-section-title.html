@@ -1,0 +1,31 @@
+{{ if .Params.company }}
+{{ .Store.Set "href" (print .Params.title " " .Params.location | lower) }}
+{{ else }}
+{{ .Store.Set "href" (.Params.title | lower) }}
+{{ end }}
+
+{{ .Store.Set "link" (replace (.Store.Get "href") " " "-") }}
+{{ .Store.Set "skills" (split .Params.skills ",") }}
+
+<div>
+    <span class="flex between">
+        <span class="flex">
+            <h3 id="{{ .Store.Get "link" }}">
+                <a href="#{{ .Store.Get "link" }}">{{ .Params.title }}{{ if .Params.location }} <i>at</i> {{ .Params.location }}{{ end }}</a>
+            </h3>
+            {{ if .Params.url }}
+                &nbsp;
+                <em class="no-print">
+                    <a href="{{ .Params.url }}">{{ .Params.url }}</a>
+                </em>
+            {{ end }}
+            </span>
+        <em>{{ .Params.timeframe }}</em>
+    </span>
+
+    {{ if .Params.skills }}
+        <div class="items">
+            {{ range $i, $v := .Store.Get "skills" }}<code>{{ trim $v " " }}</code>{{ end }}
+        </div>
+    {{ end }}
+</div>

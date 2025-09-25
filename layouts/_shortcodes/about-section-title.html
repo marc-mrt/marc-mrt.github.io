@@ -1,0 +1,7 @@
+{{ .Store.Set "href" (print .Params.title | lower) }}
+{{ .Store.Set "link" (replace (.Store.Get "href") " " "-") }}
+
+<h2 id="{{ .Store.Get "link" }}" class="group-underline">
+    <a href="#{{ .Store.Get "link" }}">{{ .Params.title }}</a>
+    <span class="underline"></span>
+</h2>

@@ -126,10 +126,7 @@ h1 {
     font-size: var(--text-font-size-lg);
 }
 
-main div:not(:last-child),
-main p:not(:last-child),
-main ol:not(:last-child),
-main ul:not(:last-child) {
+main > *:not(:last-child) {
     margin-bottom: 1rem;
 }
 
@@ -140,10 +137,6 @@ small {
     color: var(--text-subtle-color);
 }
 
-h1:has(a) {
-    margin-bottom: 2rem;
-}
-
 a {
     font-weight: 400;
     color: var(--text-accent-color);
@@ -151,29 +144,11 @@ a {
     transition: text-decoration 300ms ease;
 }
 
-/* Anchor link styles for headings */
-h1:has(> a[href^="#"]), h2:has(> a[href^="#"]) {
-    position: relative;
+em > a {
+    color: var(--text-subtle-color) !important;
 }
 
-h1:has(> a[href^="#"])::after,
-h2:has(> a[href^="#"])::after {
-    content: "#";
-    color: var(--text-accent-color);
-    opacity: 0;
-    transition: opacity 300ms ease;
-    position: absolute;
-    bottom: 0;
-    left: -.75em;
-}
-
-h1:hover:has(> a[href^="#"])::after,
-h2:hover:has(> a[href^="#"])::after {
-    opacity: 1;
-}
-
-/* Pseudo-tag styles for markdown */
-p > code {
+code {
     background-color: var(--background-subtle-color);
 
     font-size: var(--text-font-size-sm);
@@ -184,8 +159,37 @@ p > code {
     font-weight: 200;
 }
 
+/* Anchor link styles for headings */
+h1:has(> a[href^="#"]),
+h2:has(> a[href^="#"]),
+h3:has(> a[href^="#"]) {
+    position: relative;
+}
+
+h1:has(> a[href^="#"])::after,
+h2:has(> a[href^="#"])::after,
+h3:has(> a[href^="#"])::after {
+    content: "#";
+    color: var(--text-accent-color);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    position: absolute;
+    bottom: 0;
+    left: -.75em;
+}
+
+h1:hover:has(> a[href^="#"])::after,
+h2:hover:has(> a[href^="#"])::after,
+h3:hover:has(> a[href^="#"])::after {
+    opacity: 1;
+}
+
 /* Printing specific styles */
 @media print {
+    .no-print {
+        display: none;
+    }
+
     :root {
         --body-padding: 2em 0;
     }
@@ -195,36 +199,45 @@ p > code {
         display: none !important;
     }
 
-    h1 {
-        font-size: 1.25em;
+    main > * {
+        line-height: 1em;
+    }
+
+    main > *:not(:last-child) {
+        margin-bottom: 0.5em;
     }
 
     h2 {
-        font-size: 1em;
+        font-size: 1.25em;
+        line-height: 1.25em;
     }
 
-    p,
-    ol,
-    ul {
-        font-size: 0.75em;
+    h3 {
+        margin-top: 1em;
+        font-size: 1em;
         line-height: 1em;
-        margin-bottom: 1em;
+    }
+
+    p {
+        font-size: 0.75em;
     }
 
     em,
     small {
-        font-size: 0.65em;
+        font-size: 0.5em;
     }
 
-    p > code {
+    code {
         background-color: unset;
         font-style: italic;
         font-weight: 200;
-        font-size: 0.75em;
+        font-size: 0.5em;
+        line-height: 0.5em;
         padding: 0;
+        border: none;
     }
 
-    p > code:not(:last-child):after {
+    code:not(:last-child):after {
         content: ",";
     }
 
@@ -304,9 +317,26 @@ main > :nth-child(n + 10) {
 }
 
 /* Custom classes */
-.experience-title {
+.flex {
     display: flex;
-    justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.5rem;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.items > *:not(:last-child) {
+    margin-right: 0.2rem;
+}
+
+.group-underline {
+    display: flex;
+    align-items: baseline;
+}
+
+.underline {
+    flex-grow: 1;
+    border-bottom: 1px solid var(--text-subtle-color);
+    margin-left: 1rem;
 }
