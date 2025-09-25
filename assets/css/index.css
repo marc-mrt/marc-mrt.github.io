@@ -126,9 +126,10 @@ h1 {
     font-size: var(--text-font-size-lg);
 }
 
-p,
-ol,
-ul {
+main div:not(:last-child),
+main p:not(:last-child),
+main ol:not(:last-child),
+main ul:not(:last-child) {
     margin-bottom: 1rem;
 }
 
@@ -307,4 +308,5 @@ main > :nth-child(n + 10) {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    margin-bottom: 0.5rem;
 }
