@@ -3,7 +3,7 @@ title: About Me
 type: about
 ---
 
-I’m Marc Morant, a product engineer dedicated to crafting impactful, user-driven solutions. Over the past 7+ years, I’ve collaborated with startups and scale-ups to deliver high-quality, scalable systems that empower businesses and users alike.
+Hi, my name is Marc Morant, I am a product engineer dedicated to crafting impactful, user-driven solutions. Over the past 7+ years, I’ve collaborated with startups and scale-ups to deliver high-quality, scalable systems that empower businesses and users alike.
 
 My passion lies at the intersection of technology and meaningful user experiences. Whether driving product innovation, architecting fault-tolerant systems, or leading cross-functional teams, I thrive in dynamic environments that demand creativity, precision, and adaptability.
 I’m eager to continue solving complex challenges with practical, lasting solutions.
