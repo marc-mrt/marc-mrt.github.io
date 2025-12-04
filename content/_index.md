@@ -1,9 +1,9 @@
 ---
-title: Marc Morant
+title: Hi, I'm Marc 👋
 ---
 
-Welcome to my internet thing, I'm glad you're here!
+Sometimes, I use this space to share some [thoughts]({{< ref "/blog" >}} "click here to go to my blog posts"), and keep an updated [CV]({{< ref "/about" >}} "click here to go to my cv"). Feel free to check those out, whatever speaks to you.
 
-I'm a software engineer based in Berlin, and here is the place I share content online. Do check out my [blog]({{< ref "/blog" >}} "click here to go to my blog") where I talk about engineering software for the web or my [CV]({{< ref "/about" >}} "click here to go to my cv") if that speaks to you.
+If you want to chat, you can write me at marc _at_ mrnt _dot_ fr, or [LinkedIn](https://www.linkedin.com/in/marc-mrt/) and find me [GitHub](https://github.com/marc-mrt/).
 
-I'm always happy to talk, feel to reach out to me via [email](mailto:marc@mrnt.fr), [GitHub](https://github.com/marc-mrt/) or [LinkedIn](https://www.linkedin.com/in/marc-mrt/).
+That's it, be well and thanks for swinging by!
