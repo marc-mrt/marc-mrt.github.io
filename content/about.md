@@ -3,12 +3,15 @@ title: About Me
 type: about
 ---
 
-Hi, my name is Marc Morant, I am a product engineer dedicated to crafting impactful, user-driven solutions. Over the past 7+ years, I’ve collaborated with startups and scale-ups to deliver high-quality, scalable systems that empower businesses and users alike.
+Hi, my name is Marc Morant, I am a product engineer dedicated to crafting impactful, user-driven solutions. Over the past 8+ years, I’ve collaborated with startups and scale-ups to deliver high-quality, scalable systems that empower businesses and users alike.
 
-My passion lies at the intersection of technology and meaningful user experiences. Whether driving product innovation, architecting fault-tolerant systems, or leading cross-functional teams, I thrive in dynamic environments that demand creativity, precision, and adaptability.
-I’m eager to continue solving complex challenges with practical, lasting solutions.
+My passion lies at the intersection of technology and impactful products, I thrive in dynamic environments that demand creativity, precision, and adaptability.
 
 {{< about-section-title title="Experience" >}}
+
+{{< about-sub-section-title title="Senior product engineer" location="Deepset" timeframe="Jan '26 - now" skills="TypeScript, React, Python, AI, SQL, AWS, Architecture, Security, Leadership, Product" >}}
+
+Building the platform for enterprise-grade, sovereign AI with Haystack.
 
 {{< about-sub-section-title title="Product engineer" location="Midlane" timeframe="Nov '23 - Jun '25" skills="TypeScript, Next.js, React, SQL, AWS, Lambda, Queue, Events, DDD, Architecture, Security, Leadership, Product" >}}
 
