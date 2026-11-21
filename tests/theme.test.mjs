@@ -41,6 +41,7 @@ const MIN_TEXT_CONTRAST = 4.5;
 const MIN_NON_TEXT_CONTRAST = 3;
 
 const START_TIMEOUT_MS = 30000;
+const RETRY_DELAY_MS = 250;
 const CDP_TIMEOUT_MS = 10000;
 const KILL_TIMEOUT_MS = 2000;
 
@@ -56,10 +57,31 @@ const sleep = (ms, unref = false) =>
         if (unref) timer.unref();
     });
 
+// Bound a promise by a deadline, throwing when the deadline passes first.
+async function withDeadline(promise, timeoutMs, label) {
+    let timer;
+    try {
+        return await Promise.race([
+            promise,
+            new Promise((_, reject) => {
+                timer = setTimeout(() => reject(new Error(`timed out ${label}`)), timeoutMs);
+                timer.unref();
+            }),
+        ]);
+    } finally {
+        clearTimeout(timer);
+        // Mark the raced promise handled so a late rejection after a lost
+        // race cannot crash the process during teardown.
+        promise.catch(() => {});
+    }
+}
+
 // Wait until probe() returns truthy, bounded by a real deadline even when a
-// single probe hangs. Probe errors are retried until the deadline.
+// single probe hangs. Probe errors are retried: startup probes hit transient
+// connection-refused errors before the server listens.
 async function waitFor(probe, timeoutMs, label) {
     const deadline = Date.now() + timeoutMs;
+    let lastError = null;
     for (;;) {
         const remaining = deadline - Date.now();
         if (remaining <= 0) break;
@@ -74,9 +96,11 @@ async function waitFor(probe, timeoutMs, label) {
         ]);
         if (outcome.timedOut) break;
         if (outcome.value) return outcome.value;
-        if (outcome.error) throw outcome.error;
+        if (outcome.error) lastError = outcome.error;
+        await sleep(RETRY_DELAY_MS);
     }
-    throw new Error(`timed out waiting for ${label}`);
+    const detail = lastError ? ` (last error: ${lastError.message})` : '';
+    throw new Error(`timed out waiting for ${label}${detail}`);
 }
 
 // Stop a process idempotently and within KILL_TIMEOUT_MS per signal. A
@@ -150,27 +174,28 @@ async function startChrome() {
         });
         chrome.stderr.once('error', (error) => settle(reject, error));
     });
-    const browserWs = await Promise.race([
+    const browserWs = await withDeadline(
         devtoolsUrl,
-        sleep(START_TIMEOUT_MS, true).then(() => {
-            throw new Error('timed out waiting for Chromium DevTools');
-        }),
-    ]);
+        START_TIMEOUT_MS,
+        'waiting for Chromium DevTools'
+    );
 
     const httpPort = new URL(browserWs).port;
     const target = await (
-        await fetch(`http://127.0.0.1:${httpPort}/json/new?about:blank`, { method: 'PUT' })
+        await fetch(`http://127.0.0.1:${httpPort}/json/new?about:blank`, {
+            method: 'PUT',
+            signal: AbortSignal.timeout(START_TIMEOUT_MS),
+        })
     ).json();
     const ws = new WebSocket(target.webSocketDebuggerUrl);
-    await Promise.race([
+    await withDeadline(
         new Promise((resolve, reject) => {
             ws.addEventListener('open', resolve);
             ws.addEventListener('error', reject);
         }),
-        sleep(START_TIMEOUT_MS, true).then(() => {
-            throw new Error('timed out connecting to the DevTools websocket');
-        }),
-    ]);
+        START_TIMEOUT_MS,
+        'connecting to the DevTools websocket'
+    );
     return ws;
 }
 
@@ -283,8 +308,9 @@ const COLLECT = `(() => {
 
 async function collect(page) {
     const loaded = cdp.waitEvent('Page.loadEventFired');
-    await cdp.send('Page.navigate', { url: base + page });
-    await loaded;
+    const navigation = cdp.send('Page.navigate', { url: base + page });
+    // Promise.all keeps both promises observed even when one rejects.
+    await Promise.all([navigation, loaded]);
     const { result } = await cdp.send('Runtime.evaluate', {
         expression: COLLECT,
         returnByValue: true,
