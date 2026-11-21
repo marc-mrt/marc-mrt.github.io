@@ -69,6 +69,19 @@
     }
 }
 
+/* Dark color scheme, driven only by the system/browser preference */
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1814;
+        --text-color: #ffffff;
+        --text-accent-color: #e3b678;
+        --text-subtle-color: #b5b5b5;
+        --background-subtle-color: #252525;
+
+        color-scheme: dark;
+    }
+}
+
 /* Global styles */
 * {
     background-color: var(--background-color);
