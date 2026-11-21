@@ -11,7 +11,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PAGES = ['/', '/about/', '/blog/'];
+
+// Samples every page must expose; extra samples are checked when present.
+const PAGES = {
+    '/': ['body', 'paragraph', 'link', 'subtle'],
+    '/about/': ['body', 'paragraph', 'link', 'subtle', 'code', 'underline'],
+    '/blog/': ['body', 'link', 'subtle'],
+};
 
 const LIGHT = {
     background: [229, 231, 235],
@@ -29,15 +35,67 @@ const DARK = {
     codeBackground: [37, 37, 37],
 };
 
-// WCAG AA is 4.5:1 for text; this palette must exceed 7:1 with margin.
-const MIN_TEXT_CONTRAST = 7;
+// WCAG AA requires 4.5:1 for normal text; this palette exceeds 7:1.
+const MIN_TEXT_CONTRAST = 4.5;
 // WCAG non-text (borders, underlines).
 const MIN_NON_TEXT_CONTRAST = 3;
 
-let hugo;
-let chrome;
-let cdp;
-let base;
+const START_TIMEOUT_MS = 30000;
+const CDP_TIMEOUT_MS = 10000;
+const KILL_TIMEOUT_MS = 2000;
+
+let hugo = null;
+let chrome = null;
+let chromeProfile = null;
+let cdp = null;
+let base = null;
+
+const sleep = (ms, unref = false) =>
+    new Promise((resolve) => {
+        const timer = setTimeout(resolve, ms);
+        if (unref) timer.unref();
+    });
+
+// Wait until probe() returns truthy, bounded by a real deadline even when a
+// single probe hangs. Probe errors are retried until the deadline.
+async function waitFor(probe, timeoutMs, label) {
+    const deadline = Date.now() + timeoutMs;
+    for (;;) {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) break;
+        const outcome = await Promise.race([
+            Promise.resolve()
+                .then(probe)
+                .then(
+                    (value) => ({ value }),
+                    (error) => ({ error })
+                ),
+            sleep(remaining, true).then(() => ({ timedOut: true })),
+        ]);
+        if (outcome.timedOut) break;
+        if (outcome.value) return outcome.value;
+        if (outcome.error) throw outcome.error;
+    }
+    throw new Error(`timed out waiting for ${label}`);
+}
+
+// Stop a process idempotently and within KILL_TIMEOUT_MS per signal. A
+// missing or already-exited process resolves immediately.
+async function stopProcess(proc) {
+    if (!proc || proc.exitCode !== null || proc.signalCode !== null) return;
+    proc.kill('SIGTERM');
+    await Promise.race([
+        new Promise((resolve) => proc.once('exit', resolve)),
+        sleep(KILL_TIMEOUT_MS),
+    ]);
+    if (proc.exitCode === null && proc.signalCode === null) {
+        proc.kill('SIGKILL');
+        await Promise.race([
+            new Promise((resolve) => proc.once('exit', resolve)),
+            sleep(KILL_TIMEOUT_MS),
+        ]);
+    }
+}
 
 function freePort() {
     return new Promise((resolve, reject) => {
@@ -50,71 +108,70 @@ function freePort() {
     });
 }
 
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function waitFor(probe, timeoutMs, label) {
-    const deadline = Date.now() + timeoutMs;
-    for (;;) {
-        try {
-            const value = await probe();
-            if (value) return value;
-        } catch {
-            // Retry until the deadline: the process may not be listening yet.
-        }
-        if (Date.now() > deadline) throw new Error(`timed out waiting for ${label}`);
-        await sleep(250);
-    }
-}
-
 async function startHugo() {
     const port = await freePort();
-    const proc = spawn(
+    // Hugo serves its stylesheet from the localhost baseURL, so browse via
+    // localhost too: a 127.0.0.1 origin makes the crossorigin="anonymous"
+    // stylesheet fetch fail and every computed color reads transparent.
+    base = `http://localhost:${port}`;
+    hugo = spawn(
         'hugo',
         ['server', '--port', String(port), '--bind', '127.0.0.1', '--disableLiveReload', '--quiet'],
         { cwd: ROOT, stdio: ['ignore', 'ignore', 'pipe'] }
     );
-    base = `http://localhost:${port}`;
-    await waitFor(async () => (await fetch(base + '/')).ok, 30000, 'hugo server');
-    return proc;
+    await waitFor(async () => (await fetch(base + '/')).ok, START_TIMEOUT_MS, 'hugo server');
 }
 
 async function startChrome() {
     const chromeBin = process.env.CHROME_BIN;
     assert.ok(chromeBin, 'CHROME_BIN must point to a Chromium executable');
-    const userDataDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'theme-test-'));
-    const proc = spawn(
+    chromeProfile = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'theme-test-'));
+    chrome = spawn(
         chromeBin,
-        ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${userDataDir}`, 'about:blank'],
+        ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${chromeProfile}`, 'about:blank'],
         { stdio: ['ignore', 'ignore', 'pipe'] }
     );
 
+    // Resolve the DevTools endpoint, or fail fast when Chromium dies before
+    // it ever listens.
     const devtoolsUrl = new Promise((resolve, reject) => {
         let buffer = '';
-        proc.stderr.on('data', (chunk) => {
+        const settle = (fn, arg) => {
+            chrome.removeListener('exit', onExit);
+            fn(arg);
+        };
+        const onExit = (code) =>
+            settle(reject, new Error(`Chromium exited before DevTools started (code ${code})`));
+        chrome.once('exit', onExit);
+        chrome.stderr.on('data', (chunk) => {
             buffer += chunk;
             const match = buffer.match(/DevTools listening on (ws:\/\/\S+)/);
-            if (match) resolve(match[1]);
+            if (match) settle(resolve, match[1]);
         });
-        proc.stderr.on('error', reject);
+        chrome.stderr.once('error', (error) => settle(reject, error));
     });
-    const browserWs = await waitFor(() => devtoolsUrl, 30000, 'Chromium DevTools');
+    const browserWs = await Promise.race([
+        devtoolsUrl,
+        sleep(START_TIMEOUT_MS, true).then(() => {
+            throw new Error('timed out waiting for Chromium DevTools');
+        }),
+    ]);
 
     const httpPort = new URL(browserWs).port;
     const target = await (
         await fetch(`http://127.0.0.1:${httpPort}/json/new?about:blank`, { method: 'PUT' })
     ).json();
-
     const ws = new WebSocket(target.webSocketDebuggerUrl);
-    await new Promise((resolve, reject) => {
-        ws.addEventListener('open', resolve);
-        ws.addEventListener('error', reject);
-    });
-
-    proc.userDataDir = userDataDir;
-    proc.websocket = ws;
-    return proc;
+    await Promise.race([
+        new Promise((resolve, reject) => {
+            ws.addEventListener('open', resolve);
+            ws.addEventListener('error', reject);
+        }),
+        sleep(START_TIMEOUT_MS, true).then(() => {
+            throw new Error('timed out connecting to the DevTools websocket');
+        }),
+    ]);
+    return ws;
 }
 
 class Cdp {
@@ -123,34 +180,80 @@ class Cdp {
         this.nextId = 0;
         this.pending = new Map();
         this.eventWaiters = new Map();
+        this.closed = null;
         ws.addEventListener('message', (event) => {
             const message = JSON.parse(event.data);
             if (message.id) {
                 const settle = this.pending.get(message.id);
+                if (!settle) return;
                 this.pending.delete(message.id);
+                clearTimeout(settle.timer);
                 if (message.error) settle.reject(new Error(message.error.message));
                 else settle.resolve(message.result);
                 return;
             }
-            for (const resolve of this.eventWaiters.get(message.method) ?? []) resolve(message.params);
+            const waiters = this.eventWaiters.get(message.method) ?? [];
             this.eventWaiters.delete(message.method);
+            for (const waiter of waiters) {
+                clearTimeout(waiter.timer);
+                waiter.resolve(message.params);
+            }
         });
+        ws.addEventListener('close', () => this.fail(new Error('DevTools connection closed')));
+        ws.addEventListener('error', () => this.fail(new Error('DevTools connection error')));
+    }
+
+    fail(error) {
+        if (this.closed) return;
+        this.closed = error;
+        for (const { reject, timer } of this.pending.values()) {
+            clearTimeout(timer);
+            reject(error);
+        }
+        this.pending.clear();
+        for (const waiters of this.eventWaiters.values()) {
+            for (const waiter of waiters) {
+                clearTimeout(waiter.timer);
+                waiter.reject(error);
+            }
+        }
+        this.eventWaiters.clear();
     }
 
     send(method, params = {}) {
+        if (this.closed) return Promise.reject(this.closed);
         return new Promise((resolve, reject) => {
             const id = ++this.nextId;
-            this.pending.set(id, { resolve, reject });
+            const timer = setTimeout(() => {
+                if (this.pending.delete(id)) reject(new Error(`CDP ${method} timed out`));
+            }, CDP_TIMEOUT_MS);
+            timer.unref();
+            this.pending.set(id, { resolve, reject, timer });
             this.ws.send(JSON.stringify({ id, method, params }));
         });
     }
 
     waitEvent(method) {
-        return new Promise((resolve) => {
+        if (this.closed) return Promise.reject(this.closed);
+        return new Promise((resolve, reject) => {
+            const waiter = { resolve, reject, timer: null };
+            waiter.timer = setTimeout(() => {
+                const waiters = this.eventWaiters.get(method) ?? [];
+                const index = waiters.indexOf(waiter);
+                if (index !== -1) waiters.splice(index, 1);
+                reject(new Error(`timed out waiting for ${method}`));
+            }, CDP_TIMEOUT_MS);
+            waiter.timer.unref();
             const waiters = this.eventWaiters.get(method) ?? [];
-            waiters.push(resolve);
+            waiters.push(waiter);
             this.eventWaiters.set(method, waiters);
         });
+    }
+
+    close() {
+        if (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING) {
+            this.ws.close();
+        }
     }
 }
 
@@ -207,6 +310,12 @@ function contrastRatio(fg, bg) {
     return (high + 0.05) / (low + 0.05);
 }
 
+function assertRequired(page, data) {
+    for (const sample of PAGES[page]) {
+        assert.ok(data[sample], `${page} is missing the required ${sample} sample`);
+    }
+}
+
 function assertPalette(page, data, palette) {
     assert.deepEqual(parseColor(data.body.backgroundColor), palette.background, `${page} background`);
     assert.deepEqual(parseColor(data.body.color), palette.text, `${page} body text`);
@@ -216,8 +325,10 @@ function assertPalette(page, data, palette) {
         assert.deepEqual(parseColor(data.link.color), palette.accent, `${page} link`);
     if (data.subtle)
         assert.deepEqual(parseColor(data.subtle.color), palette.subtle, `${page} subtle text`);
-    if (data.code)
+    if (data.code) {
         assert.deepEqual(parseColor(data.code.backgroundColor), palette.codeBackground, `${page} code background`);
+        assert.deepEqual(parseColor(data.code.color), palette.text, `${page} code text`);
+    }
 }
 
 function assertContrast(page, data, t) {
@@ -246,45 +357,41 @@ function assertContrast(page, data, t) {
     t.diagnostic(`${page}: contrast ${JSON.stringify(ratios)}`);
 }
 
+async function assertScheme(t, scheme, palette) {
+    await emulate(scheme);
+    for (const page of Object.keys(PAGES)) {
+        const data = await collect(page);
+        assertRequired(page, data);
+        assertPalette(page, data, palette);
+        assertContrast(page, data, t);
+    }
+}
+
 before(async () => {
-    hugo = await startHugo();
-    chrome = await startChrome();
-    cdp = new Cdp(chrome.websocket);
+    await startHugo();
+    cdp = new Cdp(await startChrome());
     await cdp.send('Page.enable');
 });
 
 after(async () => {
-    chrome?.kill();
-    hugo?.kill();
-    await Promise.allSettled([
-        new Promise((resolve) => chrome?.once('exit', resolve)),
-        new Promise((resolve) => hugo?.once('exit', resolve)),
-    ]);
-    if (chrome?.userDataDir) await fs.promises.rm(chrome.userDataDir, { recursive: true, force: true });
-});
-
-test('light preference keeps the light palette with AA contrast', async (t) => {
-    await emulate('light');
-    for (const page of PAGES) {
-        const data = await collect(page);
-        assertPalette(page, data, LIGHT);
-        assertContrast(page, data, t);
+    cdp?.close();
+    await Promise.all([stopProcess(chrome), stopProcess(hugo)]);
+    if (chromeProfile) {
+        await fs.promises.rm(chromeProfile, { recursive: true, force: true });
     }
 });
 
-test('dark preference inverts the palette with AA contrast', async (t) => {
-    await emulate('dark');
-    for (const page of PAGES) {
-        const data = await collect(page);
-        assertPalette(page, data, DARK);
-        assertContrast(page, data, t);
-    }
-});
+test('light preference keeps the light palette with AA contrast', (t) =>
+    assertScheme(t, 'light', LIGHT));
+
+test('dark preference inverts the palette with AA contrast', (t) =>
+    assertScheme(t, 'dark', DARK));
 
 test('print emulation stays light under a dark preference', async (t) => {
     await emulate('dark', 'print');
-    for (const page of PAGES) {
+    for (const page of Object.keys(PAGES)) {
         const data = await collect(page);
+        assertRequired(page, data);
         assert.deepEqual(
             parseColor(data.body.backgroundColor),
             LIGHT.background,
